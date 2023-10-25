@@ -18,6 +18,8 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "nunjucks": "^3.2.4",
+    "nunjucks-loader": "^2.2.2",
     "save-dev": "^0.0.1-security",
     "webpack-dev-server": "^4.15.1"
   }
