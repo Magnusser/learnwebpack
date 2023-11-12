@@ -18,15 +18,7 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader,'css-loader']
-            }
-        ]
-    },
-    module: {
-        rules: [
-            {
-                test: /\.css$/i,
-                use: [HtmlWebpackPlugin.loader, 'html-webpack-plugin']
+                use: ['style-loader','css-loader']
             }
         ]
     },
