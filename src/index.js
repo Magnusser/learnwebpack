@@ -3,3 +3,5 @@ esm();
 const cjs = require('./common');
 cjs();
 import './style.css';
+
+import * as bootstrap from 'bootstrap';

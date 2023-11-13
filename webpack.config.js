@@ -1,10 +1,15 @@
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
-import { fileURLToPath } from "url";
-const path = require('path');
+import { fileURLToPath } from 'url';
+import fs from 'fs';
+import glob from 'glob';
+import { PurgeCSSPlugin } from 'purgecss-webpack-plugin';
 
-module.exports = {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default {
     entry: './src/index.js',
     output: {
         filename: 'main.js',
@@ -22,6 +27,18 @@ module.exports = {
             {
                 test: /\.css$/i,
                 use: [MiniCssExtractPlugin.loader,'css-loader']
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [MiniCssExtractPlugin.loader,'css-loader', 'sass-loader']
+            },
+            {
+                test: /\.nunjucks$/i,
+                use: ['simple-nunjucks-loader']
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
             }
         ]
     },
@@ -29,6 +46,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html'
         }),
-        new MiniCssExtractPlugin()
+        new MiniCssExtractPlugin(),
+        // new PurgeCSSPlugin({
+        //     paths: glob.sync(`src/views/**/*`, { nodir: true }),
+        // }),
     ],
 }
