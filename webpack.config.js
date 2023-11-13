@@ -1,37 +1,14 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
-<<<<<<< HEAD
-import { fileURLToPath } from 'url';
-import fs from 'fs';
-import glob from 'glob';
-import { PurgeCSSPlugin } from 'purgecss-webpack-plugin';
-=======
 import { fileURLToPath } from "url";
 import fs from 'fs';
 import glob from 'glob';
->>>>>>> 01dd9ac5db1eb2d460e26ad31242fc8c288117d1
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-<<<<<<< HEAD
 export default {
-=======
-const PATHS = {
-    src: path.join(__dirname, "src/views"),
-};
-
-let views = fs.readdirSync ('./src/views');
-let htmlPlugins - [];
-for (let view of views) {
-    htmlPlugins.push(new HtmlWebpackPlugin({
-    filename: view,
-    template: './src/views/' + view
-    }));
-}
-module.exports = {
->>>>>>> 01dd9ac5db1eb2d460e26ad31242fc8c288117d1
     entry: './src/index.js',
     output: {
         filename: 'main.js',
