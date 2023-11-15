@@ -2,8 +2,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import { fileURLToPath } from "url";
-import fs from 'fs';
-import glob from 'glob';
+import { VueLoaderPlugin } from 'vue-loader';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -45,9 +44,14 @@ export default {
         new HtmlWebpackPlugin({
             template: './src/index.html'
         }),
+        new HtmlWebpackPlugin({
+            filename: '200.html',
+            template: './src/index.html'
+        }),
         new MiniCssExtractPlugin(),
         // new PurgeCSSPlugin({
         //     paths: glob.sync(`src/views/**/*`, { nodir: true }),
         // }),
+        new VueLoaderPlugin(),
     ],
 }
