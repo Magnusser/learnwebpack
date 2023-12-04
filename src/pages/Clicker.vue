@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
       <p class="text-center">Cookies {{ cookies }}</p>
-      <img src="https://pngimg.com/d/cookie_PNG13656.png" class="img-fluid" @click="cookies++">
+      <img src="https://pngimg.com/d/cookie_PNG13656.png" class="img-fluid" @click="cookies++" height="200" id="BigCookie">
     </div>
     <div class="col">
       Column
@@ -15,6 +15,12 @@
         Buy {{ name }} for 
         {{ upgrade.price }} clicks ({{upgrade.cps}} clicks per second)
         {{ upgrade.count }}
+      </button>
+      <button v-for="(booster, name) in boosters"
+      class="btn btn-outline-danger py-3"
+      :disabled="cookies<booster.price"
+      @click="upgrades.grandma.cps++">
+        Make Grandma even better!
       </button>
     </div>
   </div>
@@ -40,6 +46,10 @@ export default {
                farm: {price: 1000, cps: 10, count: 0},
                factory: {price: 10000, cps: 100, count: 0},
                temple: {price: 100000, cps: 1000, count: 0},
+            },
+            cookies: 0,
+            boosters: {
+              robogranny: {price: 10, count: 0}
             }
         }
     },
