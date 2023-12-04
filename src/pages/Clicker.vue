@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
       <p class="text-center">Cookies {{ cookies }}</p>
-      <img src="https://pngimg.com/d/cookie_PNG13656.png" class="img-fluid" @click="cookies++" height="200" id="BigCookie">
+      <img src="https://pngimg.com/d/cookie_PNG13656.png" class="img-fluid" @click="cookies++" height="200">
     </div>
     <div class="col">
       Column
