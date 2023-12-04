@@ -1,8 +1,12 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
-import { fileURLToPath } from "url";
+import { fileURLToPath } from 'url';
+import fs from 'fs';
+import glob from 'glob';
+import { PurgeCSSPlugin } from 'purgecss-webpack-plugin';
 import { VueLoaderPlugin } from 'vue-loader';
+import Dotenv from 'dotenv-webpack';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -11,12 +15,15 @@ export default {
     entry: './src/index.js',
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        clean: true,
     },
     devServer: {
         static: {
             directory: path.resolve(__dirname, 'public')
         },
+        historyApiFallback: true,
+        open: true,
         port: 9000,
         compress: true,
     },
@@ -37,6 +44,13 @@ export default {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
+            },
+            {
+                test: /\.png/,
+                type: 'asset/resource',
+                generator: {
+                    filename: '[name][ext]'
+                }
             }
         ]
     },
@@ -53,5 +67,6 @@ export default {
         //     paths: glob.sync(`src/views/**/*`, { nodir: true }),
         // }),
         new VueLoaderPlugin(),
+        new Dotenv()
     ],
 }
