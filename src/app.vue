@@ -6,6 +6,8 @@
 import Tabs from './components/Tabs.vue';
 
 export default {
-    components: { Tabs }
+    components: { 
+        Tabs 
+    }
 }
 </script>
