@@ -35,15 +35,6 @@ export default {
     created(){
         this.getCharacters('https://rickandmortyapi.com/api/character');
     },
-    mounted(){
-        document.addEventListener('scroll', ()=> {
-            if(window.scrollY+window.innerHeight > document.body.clientHeight-100){
-                if(!this.loading && this.info.next){
-                    this.infiniteNext();
-                }
-            }
-        });
-    },
     data(){
         return {
             results: [],
